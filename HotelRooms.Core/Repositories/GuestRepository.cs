@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.JsonPatch;
 namespace HotelRooms.Core.Repositories
 {
     public interface IGuestRepository : IRepository<Guest> { 
-        Guest Patch(long id, JsonPatchDocument<Guest> p);
+        Guest Patch(long id, JsonPatchDocument<Guest> doc);
     }
 
     public class GuestRepository : IGuestRepository

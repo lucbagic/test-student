@@ -1,28 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//zašto on nema browsermodule
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProtestListComponent } from './protests/protest-list/protest-list.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { ProtestDetailComponent } from './protests/protest-detail/protest-detail.component';
-import { CityListComponent } from './cities/city-list/city-list.component';
-import { CityDetailComponent } from './cities/city-detail/city-detail.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ReceptionModule } from './reception/reception.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProtestListComponent,
-    ProtestDetailComponent,
-    CityListComponent,
-    CityDetailComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
+    //on je zakomentirao browserModule
+    BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    ToastrModule.forRoot(),
+    BrowserModule,
+    ReceptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

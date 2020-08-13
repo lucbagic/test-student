@@ -45,15 +45,8 @@ namespace HotelRooms.Api.Controllers
             return new { success = this.guestRepository.Delete(id) };
         }
 
-        [HttpPut("{id}")]
-        public ActionResult<Guest> UpdateChambermaid(long id, [FromBody] Guest updatedGuest)
-        {
-            var guest = this.guestRepository.Update(id, updatedGuest);
-            return guest;
-        }
-
         [HttpPatch("{id}")]
-        public ActionResult<Guest> Patch(int id, [FromBody]JsonPatchDocument<Guest> doc)
+        public ActionResult<Guest> Patch(long id, [FromBody]JsonPatchDocument<Guest> doc)
         {
             var guest = this.guestRepository.GetOne(id);
             this.guestRepository.Patch(id, doc);
