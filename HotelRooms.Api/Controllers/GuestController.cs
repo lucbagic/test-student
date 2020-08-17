@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using HotelRooms.Data.Entities;
 using Microsoft.AspNetCore.JsonPatch;
 using HotelRooms.Core.Repositories;
+using HotelRooms.Api.Responses.Guests;
+using HotelRooms.Api.Requests.Guests;
+using HotelRooms.Api.Services;
 
 namespace HotelRooms.Api.Controllers
 {
@@ -14,17 +17,35 @@ namespace HotelRooms.Api.Controllers
     {
         private readonly IGuestRepository guestRepository;
 
-        public GuestController(IGuestRepository guestRepository)
+        private readonly IGuestService guestService;
+        private readonly IMapper mapper;
+
+        public GuestController(
+            IGuestRepository guestRepository,
+            IGuestService guestService,
+            IMapper mapper
+        )
         {
+            this.guestService = guestService;
             this.guestRepository = guestRepository;
+            this.mapper = mapper;
         }
 
+        /*
         [HttpGet]
         public ActionResult<IEnumerable<Guest>> GetGuests([FromQuery] string search)
         {
             var guests = this.guestRepository.GetAll(search);
             return Ok(guests);
         }
+     */
+        [HttpGet]
+        public ActionResult<GuestPaginatedResponse> GetPaginatedGuests([FromQuery] PaginatedGuestRequest request)
+        {
+            var guests = this.guestService.GetPaginatedResponse(request);
+            return Ok(guests);
+        }
+
 
         [HttpGet("{id}")]
         public ActionResult<Guest> GetGuest(long id){

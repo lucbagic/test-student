@@ -23,7 +23,6 @@ export class GuestListComponent implements OnInit{
       this.loadGuests();
     }
   
-    //ne kužiiim
     loadGuests() {
       let params: any = { page: this.vm?.page || 1 };
       if(this.searchText) { params.search = this.searchText; }

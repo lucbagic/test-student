@@ -4,7 +4,7 @@ import { GuestListComponent } from './guest-list/guest-list.component';
 
 const routes: Routes = [
   //ima života na 4200/guests
-  { path: 'guests', component: GuestListComponent,  }
+  { path: 'reception/guests', component: GuestListComponent,  }
   //{ path: 'new', component: ProtestFormComponent, },
   //{ path: ':id', component: ProtestDetailComponent }
 ];

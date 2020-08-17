@@ -24,13 +24,16 @@ namespace HotelRooms.Api.Controllers.Auth
         [HttpPost]
         public ActionResult<RegistrationResponse> Register(RegistrationRequest request)
         {
-            var user = this.mapper.Map<AppUser>(request);
-            user = this.authService.Register(user);
+            /*
+            var appUser = this.mapper.Map<AppUser>(request);
 
-            var response = new RegistrationResponse();
-            response.User = user;
-            response.Token = "";
+            /* register user: create the entity in database, hash the password, etc. 
+            var userDetail = this.authService.Register(appUser);
+            var token = JwtHelper.CreateFromUser(appUser);
+            var response = new RegistrationResponse(userDetail, token);
             return response;
+            */
+            return null;
         }
     }
 }

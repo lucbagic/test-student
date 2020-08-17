@@ -29,6 +29,7 @@ namespace HotelRooms.Core.Repositories
                     rR.Room.RoomType.Type.Contains(search)
                 );
             }
+            query = query.Include(r => r.Guest);
             return query.ToList();
         }
 

@@ -23,12 +23,14 @@ namespace HotelRooms.Api.Middleware
             IUserRepository userRepository,
             IConfiguration configuration
         ) {
+            //uzima token iz header-a
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
             if (token == null)
             {
                 await next(context);
             }
 
+            //sigurnosna provjera, ako je netko mijenjao token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(configuration["Secret"]);
             tokenHandler.ValidateToken(token, new TokenValidationParameters
@@ -44,6 +46,7 @@ namespace HotelRooms.Api.Middleware
             var userId = long.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
             var user = userRepository.GetOne(userId);
+            //globalna varijabla za moj request, user tipa mogu svugdje koristiti
             context.Items["AppUser"] = user;
         }
     }

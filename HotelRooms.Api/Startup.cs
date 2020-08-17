@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using HotelRooms.Api.Extensions;
 using HotelRooms.Core.Repositories;
 using HotelRooms.Data.Database;
 using Microsoft.AspNetCore.Builder;
@@ -39,10 +40,7 @@ namespace HotelRooms
             
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
-            services.AddScoped<IChambermaidRepository, ChambermaidRepository>();
-            services.AddScoped<IGuestRepository, GuestRepository>();
-            services.AddScoped<IReservedRoomRepository, ReservedRoomRepository>();
-            services.AddScoped<IAssignedRoomRepository, AssignedRoomRepository>();
+            services.RegisterScopedServices();
             
             //ne radi
         }

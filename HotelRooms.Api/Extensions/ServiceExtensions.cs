@@ -1,3 +1,4 @@
+using HotelRooms.Api.Services;
 using HotelRooms.Core.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,8 @@ namespace HotelRooms.Api.Extensions
             services.AddScoped<IChambermaidRepository, ChambermaidRepository>();
             services.AddScoped<IGuestRepository, GuestRepository>();
             services.AddScoped<IReservedRoomRepository, ReservedRoomRepository>();
+
+            services.AddScoped<IGuestService, GuestService>();
         }
     }
 }

@@ -23,16 +23,17 @@
               <th>Last name</th>
               <th>Email</th>
             </tr>
-            <td>
-                
-            </td>
+       
           </thead>
-          <tbody>
-              
+          <tbody *ngFor="let p of vm.guests" > 
+              <td>{{ p.name }}</td>
+              <td>{{ p.lastName }}</td>
+              <td>{{ p.email }}</td>
           </tbody>
           </table>
         </div>
 </div>
+
 
 <div class="container">
     <div class="intro mx-auto text-center">
@@ -46,6 +47,7 @@
                 <div class="input-group-text"><i class="fas fa-search-location"></i></div>
             </div>
         </div>
+
     </div>
     <div class="row mt-5" *ngIf="vm">
         <div class="col-sm-6 col-md-4 item mt-3"
